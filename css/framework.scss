@@ -1,0 +1,57 @@
+/*-----------------------------------------------------------------------------------
+
+    Theme Name: GepardUI
+    Theme URI: http://ui.gepardshop.com
+    Description: GepardShop UI Project
+    Author: GepardShop Team
+    Version: 1.0.0
+
+    LESS Stylesheet
+-----------------------------------------------------------------------------------*/
+@import "../../devcss/sass/bootstrap.scss";
+
+// Initialize
+@import "../../devcss/sass/variables.scss";
+@import "../../devcss/sass/mixins.scss";
+
+
+// Core CSS
+@import "../../devcss/sass/typography.scss";
+@import "../../devcss/sass/helpers.scss";
+@import "../../devcss/sass/layouts.scss";
+
+
+// Content Blocks
+@import "../../devcss/sass/topbar.scss";
+@import "../../devcss/sass/header.scss";
+@import "../../devcss/sass/sliders.scss";
+@import "../../devcss/sass/pagetitle.scss";
+@import "../../devcss/sass/content.scss";
+@import "../../devcss/sass/portfolio.scss";
+@import "../../devcss/sass/blog.scss";
+@import "../../devcss/sass/shop.scss";
+@import "../../devcss/sass/events.scss";
+
+
+// Shortcodes
+@import "../../devcss/sass/shortcodes.scss";
+
+
+// Footer
+@import "../../devcss/sass/footer.scss";
+
+
+// Widgets
+@import "../../devcss/sass/widgets.scss";
+
+
+// Extras
+@import "../../devcss/sass/extras.scss";
+
+// others
+@import "../../devcss/css/dark.scss";
+@import "../../devcss/css/font-icons.scss";
+@import "../../devcss/css/animate.scss";
+@import "../../devcss/css/magnific-popup.scss";
+@import "../../devcss/css/custom.scss";
+@import "../../devcss/css/responsive.scss";
