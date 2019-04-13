@@ -3198,7 +3198,8 @@ var SEMICOLON = SEMICOLON || {};
 
                                         elementResult.removeClass( 'alert-danger alert-success' ).addClass( 'alert ' + alertType ).html( data.msg ).slideDown( 400 );
                                     } else if( elementAlert == 'notify' ) {
-                                        elementResult.attr( 'data-notify-type', 'error' ).attr( 'data-notify-msg', data.msg ).html('');
+                                        elementResult.attr( 'data-notify-type', 'error' );
+                                        elementResult.attr( 'data-notify-msg', data.msg ).html('');
                                         SEMICOLON.widget.notifications( elementResult );
                                     }
                                     if( data.code != '0'){
