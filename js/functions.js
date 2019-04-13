@@ -3173,7 +3173,9 @@ var SEMICOLON = SEMICOLON || {};
 							target: elementResult,
 							dataType: 'json',
 							success: function( data ) {
+                                console.log(data.msg + '11111');
                                 console.log(data);
+
                                 if( elementLoader == 'button' ) {
                                     defButton.html( defButtonText );
                                 } else {
