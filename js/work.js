@@ -7,7 +7,7 @@ $('#send_verify_button').click(function(){
 
     $.post(url,data,function(result){
         console.log(result);
-        if(result.code == 1){
+        if(result.code == 200){
             alert(result.msg)
         }else{
             alert(result.msg)
