@@ -5,7 +5,7 @@ $('#send_verify_button').click(function(){
     var type = 'moblie';
     var data ={'mobile':mobile,'type':type};
 
-    $.post(url,{'mobile':'123123','type':'moblie'},function(result){
+    $.post(url,{mobile:mobile,type:'moblie'},function(result){
         console.log(result);
         if(result.code == 1){
             alert(result.msg)
@@ -13,7 +13,7 @@ $('#send_verify_button').click(function(){
             alert(result.msg)
         }
 
-    });
+    },"json");
 
 
 });
