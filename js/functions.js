@@ -3173,7 +3173,7 @@ var SEMICOLON = SEMICOLON || {};
 							target: elementResult,
 							dataType: 'json',
 							success: function( data ) {
-                                console.log(data.msg + '11111');
+
                                 console.log(data);
 
                                 if( elementLoader == 'button' ) {
@@ -3188,9 +3188,9 @@ var SEMICOLON = SEMICOLON || {};
                                         window.location.replace( data.url );
                                         return true;
                                     }
-
+                                    console.log(elementResult);
                                     elementResult.attr( 'data-notify-type', 'error' );
-                                    elementResult.attr( 'data-notify-msg', data.msg )
+                                    elementResult.attr( 'data-notify-msg', data.msg );
                                     elementResult.html('');
                                     SEMICOLON.widget.notifications( elementResult );
 
