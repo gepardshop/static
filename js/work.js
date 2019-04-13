@@ -1,12 +1,13 @@
 $('#send_verify_button').click(function(){
-    var url = $('.form-widget').find('form').attr('');
+    var url = $('.form-widget').find('form').attr();
     var mobile = $('.form-widget').find('.mobile').val();
+    console.log(mobile);
     var type = 'moblie';
     var data ={'mobile':mobile,'type':type};
 
-    $.post(url,data,function(result){
+    $.post(url,{'mobile':mobile,'type':type},function(result){
         console.log(result);
-        if(result.status == 1){
+        if(result.code == 1){
             alert(result.msg)
         }else{
             alert(result.msg)
