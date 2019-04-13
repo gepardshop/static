@@ -3189,19 +3189,13 @@ var SEMICOLON = SEMICOLON || {};
                                         return true;
                                     }
 
-                                    if( elementAlert == 'inline' ) {
-                                        if( data.code == '0' ) {
-                                            var alertType = 'alert-danger';
-                                        } else {
-                                            var alertType = 'alert-success';
-                                        }
+                                    elementResult.attr( 'data-notify-type', 'error' );
+                                    elementResult.attr( 'data-notify-msg', data.msg ).html('');
+                                    SEMICOLON.widget.notifications( elementResult );
 
-                                        elementResult.removeClass( 'alert-danger alert-success' ).addClass( 'alert ' + alertType ).html( data.msg ).slideDown( 400 );
-                                    } else if( elementAlert == 'notify' ) {
-                                        elementResult.attr( 'data-notify-type', 'error' );
-                                        elementResult.attr( 'data-notify-msg', data.msg ).html('');
-                                        SEMICOLON.widget.notifications( elementResult );
-                                    }
+
+                                   
+
                                     if( data.code != '0'){
                                         $(form).resetForm();
                                         $(form).find('.btn-group > .btn').removeClass('active');
