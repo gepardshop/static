@@ -34323,8 +34323,7 @@ img.mfp-img {
 
   #logo a.retina-logo {
     display: inline-block; } }
-.ceshi {
-  width: 100%;
-  height: 100%; }
+body {
+  font-family: tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif; }
 
 /*# sourceMappingURL=framework.css.map */
