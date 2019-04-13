@@ -3188,7 +3188,8 @@ var SEMICOLON = SEMICOLON || {};
                                         window.location.replace( data.url );
                                         return true;
                                     }
-                                    console.log(elementResult);
+                                    var res = $('.form-result');
+                                    console.log(res);
                                     elementResult.attr( 'data-notify-type', 'error' );
                                     elementResult.attr( 'data-notify-msg', data.msg );
                                     elementResult.html('');
