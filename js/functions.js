@@ -3182,13 +3182,13 @@ var SEMICOLON = SEMICOLON || {};
                                     $(form).find('.form-process').fadeOut();
                                 }
 
-								if(data.code != ''){
+								if(data.msg != ''){
 
                                     if( data.alert != '0' && data.url!='' ){
                                         window.location.replace( data.url );
                                         return true;
                                     }
-                                    var res = $('.form-result');
+                                    var res = $('.form-widget');
                                     console.log(res);
                                     elementResult.attr( 'data-notify-type', 'error' );
                                     elementResult.attr( 'data-notify-msg', data.msg );
@@ -3238,7 +3238,8 @@ var SEMICOLON = SEMICOLON || {};
                                         $(form).trigger( 'formSubmitError' );
                                         $body.removeClass( elementFormId + '-success' ).addClass( elementFormId + '-error' );
                                     }
-								}else{
+								}else
+									{
                                     if( data.alert != 'error' && elementRedirect ){
                                         window.location.replace( elementRedirect );
                                         return true;
