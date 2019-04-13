@@ -3174,7 +3174,7 @@ var SEMICOLON = SEMICOLON || {};
 							dataType: 'json',
 							success: function( data ) {
 
-                                console.log(data);
+                               // console.log(data);
 
                                 if( elementLoader == 'button' ) {
                                     defButton.html( defButtonText );
@@ -3188,15 +3188,10 @@ var SEMICOLON = SEMICOLON || {};
                                         window.location.replace( data.url );
                                         return true;
                                     }
-                                    var res = $('.form-widget');
-                                    console.log(res);
                                     elementResult.attr( 'data-notify-type', 'error' );
                                     elementResult.attr( 'data-notify-msg', data.msg );
                                     elementResult.html('');
                                     SEMICOLON.widget.notifications( elementResult );
-
-
-
 
                                     if( data.code != '0'){
                                         $(form).resetForm();
