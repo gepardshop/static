@@ -4,7 +4,7 @@ $('#send_verify_button').click(function(){
      console.log(mobile);
 
 
-    $.post(url,{mobile:'mobile',type:'moblie'},function(result){
+    $.post(url,{mobile:'mobile',type:'mobile'},function(result){
         console.log(result);
         if(result.code == 1){
             alert(result.msg)
