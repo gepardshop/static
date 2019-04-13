@@ -3160,7 +3160,7 @@ var SEMICOLON = SEMICOLON || {};
 							var defButton = $(form).find('button'),
 								defButtonText = defButton.html();
 
-							defButton.html('<i class="icon-line-loader icon-spin nomargin"></i>');
+							defButton.html('<i class="icon-line-loader icon-spin nomargin"></i>' + defButtonText);
 						} else {
 							$(form).find('.form-process').fadeIn();
 						}
@@ -3173,69 +3173,140 @@ var SEMICOLON = SEMICOLON || {};
 							target: elementResult,
 							dataType: 'json',
 							success: function( data ) {
-								if( elementLoader == 'button' ) {
-									defButton.html( defButtonText );
-								} else {
-									$(form).find('.form-process').fadeOut();
+                                if( elementLoader == 'button' ) {
+                                    defButton.html( defButtonText );
+                                } else {
+                                    $(form).find('.form-process').fadeOut();
+                                }
+
+								if(data.code != ''){
+
+                                    if( data.alert != '0' && data.url!='' ){
+                                        window.location.replace( data.url );
+                                        return true;
+                                    }
+
+                                    if( elementAlert == 'inline' ) {
+                                        if( data.code == '0' ) {
+                                            var alertType = 'alert-danger';
+                                        } else {
+                                            var alertType = 'alert-success';
+                                        }
+
+                                        elementResult.removeClass( 'alert-danger alert-success' ).addClass( 'alert ' + alertType ).html( data.msg ).slideDown( 400 );
+                                    } else if( elementAlert == 'notify' ) {
+                                        elementResult.attr( 'data-notify-type', 'error' ).attr( 'data-notify-msg', data.msg ).html('');
+                                        SEMICOLON.widget.notifications( elementResult );
+                                    }
+
+
+
+
+
+                                    if( data.code != '0'){
+                                        $(form).resetForm();
+                                        $(form).find('.btn-group > .btn').removeClass('active');
+
+                                        if( (typeof tinyMCE != 'undefined') && tinyMCE.activeEditor && !tinyMCE.activeEditor.isHidden() ){
+                                            tinymce.activeEditor.setContent('');
+                                        }
+
+                                        var rangeSlider = $(form).find('.input-range-slider');
+                                        if( rangeSlider.length > 0 ) {
+                                            rangeSlider.each( function(){
+                                                var range = $(this).data('ionRangeSlider');
+                                                range.reset();
+                                            });
+                                        }
+
+                                        var ratings = $(form).find('.input-rating');
+                                        if( ratings.length > 0 ) {
+                                            ratings.each( function(){
+                                                $(this).rating('reset');
+                                            });
+                                        }
+
+                                        var selectPicker = $(form).find('.selectpicker');
+                                        if( selectPicker.length > 0 ) {
+                                            selectPicker.each( function(){
+                                                $(this).selectpicker('val', '');
+                                                $(this).selectpicker('deselectAll');
+                                            });
+                                        }
+
+                                        $(form).find('.input-select2,select[data-selectsplitter-firstselect-selector]').change();
+
+                                        $(form).trigger( 'formSubmitSuccess' );
+                                        $body.removeClass( elementFormId + '-error' ).addClass( elementFormId + '-success' );
+
+                                    }else{
+                                        $(form).trigger( 'formSubmitError' );
+                                        $body.removeClass( elementFormId + '-success' ).addClass( elementFormId + '-error' );
+                                    }
+								}else{
+                                    if( data.alert != 'error' && elementRedirect ){
+                                        window.location.replace( elementRedirect );
+                                        return true;
+                                    }
+
+                                    if( elementAlert == 'inline' ) {
+                                        if( data.alert == 'error' ) {
+                                            var alertType = 'alert-danger';
+                                        } else {
+                                            var alertType = 'alert-success';
+                                        }
+
+                                        elementResult.removeClass( 'alert-danger alert-success' ).addClass( 'alert ' + alertType ).html( data.message ).slideDown( 400 );
+                                    } else if( elementAlert == 'notify' ) {
+                                        elementResult.attr( 'data-notify-type', data.alert ).attr( 'data-notify-msg', data.message ).html('');
+                                        SEMICOLON.widget.notifications( elementResult );
+                                    }
+
+                                    if( data.alert != 'error' ) {
+                                        $(form).resetForm();
+                                        $(form).find('.btn-group > .btn').removeClass('active');
+
+                                        if( (typeof tinyMCE != 'undefined') && tinyMCE.activeEditor && !tinyMCE.activeEditor.isHidden() ){
+                                            tinymce.activeEditor.setContent('');
+                                        }
+
+                                        var rangeSlider = $(form).find('.input-range-slider');
+                                        if( rangeSlider.length > 0 ) {
+                                            rangeSlider.each( function(){
+                                                var range = $(this).data('ionRangeSlider');
+                                                range.reset();
+                                            });
+                                        }
+
+                                        var ratings = $(form).find('.input-rating');
+                                        if( ratings.length > 0 ) {
+                                            ratings.each( function(){
+                                                $(this).rating('reset');
+                                            });
+                                        }
+
+                                        var selectPicker = $(form).find('.selectpicker');
+                                        if( selectPicker.length > 0 ) {
+                                            selectPicker.each( function(){
+                                                $(this).selectpicker('val', '');
+                                                $(this).selectpicker('deselectAll');
+                                            });
+                                        }
+
+                                        $(form).find('.input-select2,select[data-selectsplitter-firstselect-selector]').change();
+
+                                        $(form).trigger( 'formSubmitSuccess' );
+                                        $body.removeClass( elementFormId + '-error' ).addClass( elementFormId + '-success' );
+                                    } else {
+                                        $(form).trigger( 'formSubmitError' );
+                                        $body.removeClass( elementFormId + '-success' ).addClass( elementFormId + '-error' );
+                                    }
 								}
 
-								if( data.alert != 'error' && elementRedirect ){
-									window.location.replace( elementRedirect );
-									return true;
-								}
 
-								if( elementAlert == 'inline' ) {
-									if( data.alert == 'error' ) {
-										var alertType = 'alert-danger';
-									} else {
-										var alertType = 'alert-success';
-									}
 
-									elementResult.removeClass( 'alert-danger alert-success' ).addClass( 'alert ' + alertType ).html( data.message ).slideDown( 400 );
-								} else if( elementAlert == 'notify' ) {
-									elementResult.attr( 'data-notify-type', data.alert ).attr( 'data-notify-msg', data.message ).html('');
-									SEMICOLON.widget.notifications( elementResult );
-								}
 
-								if( data.alert != 'error' ) {
-									$(form).resetForm();
-									$(form).find('.btn-group > .btn').removeClass('active');
 
-									if( (typeof tinyMCE != 'undefined') && tinyMCE.activeEditor && !tinyMCE.activeEditor.isHidden() ){
-										tinymce.activeEditor.setContent('');
-									}
-
-									var rangeSlider = $(form).find('.input-range-slider');
-									if( rangeSlider.length > 0 ) {
-										rangeSlider.each( function(){
-											var range = $(this).data('ionRangeSlider');
-											range.reset();
-										});
-									}
-
-									var ratings = $(form).find('.input-rating');
-									if( ratings.length > 0 ) {
-										ratings.each( function(){
-											$(this).rating('reset');
-										});
-									}
-
-									var selectPicker = $(form).find('.selectpicker');
-									if( selectPicker.length > 0 ) {
-										selectPicker.each( function(){
-											$(this).selectpicker('val', '');
-											$(this).selectpicker('deselectAll');
-										});
-									}
-
-									$(form).find('.input-select2,select[data-selectsplitter-firstselect-selector]').change();
-
-									$(form).trigger( 'formSubmitSuccess' );
-									$body.removeClass( elementFormId + '-error' ).addClass( elementFormId + '-success' );
-								} else {
-									$(form).trigger( 'formSubmitError' );
-									$body.removeClass( elementFormId + '-success' ).addClass( elementFormId + '-error' );
-								}
 
 								if( elementFormId ) {
 									$body.removeClass( elementFormId + '-processing' ).addClass( elementFormId + '-complete' );
