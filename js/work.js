@@ -1,5 +1,5 @@
 $('#send_verify_button').click(function(){
-    var url = $('.form-widget').find('form').attr();
+    var url = $('.form-widget').find('form').attr('');
     //var mobile = $('.form-widget').find('.mobile').val();
    // console.log(mobile);
     var type = 'moblie';
