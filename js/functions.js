@@ -3173,6 +3173,7 @@ var SEMICOLON = SEMICOLON || {};
 							target: elementResult,
 							dataType: 'json',
 							success: function( data ) {
+                                console.log(data);
                                 if( elementLoader == 'button' ) {
                                     defButton.html( defButtonText );
                                 } else {
