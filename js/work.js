@@ -1,6 +1,6 @@
 $('#send_verify_button').click(function(){
     var url = $('.form-widget').find('form').attr('notify_api');
-    var mobile = $('.form-widget').find('.mobile').val();
+    var mobile = $('.form-widget').find(input[name='mobile']).val();
      console.log(mobile);
 
 
