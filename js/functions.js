@@ -3198,11 +3198,6 @@ var SEMICOLON = SEMICOLON || {};
                                         elementResult.attr( 'data-notify-type', 'error' ).attr( 'data-notify-msg', data.msg ).html('');
                                         SEMICOLON.widget.notifications( elementResult );
                                     }
-
-
-
-
-
                                     if( data.code != '0'){
                                         $(form).resetForm();
                                         $(form).find('.btn-group > .btn').removeClass('active');
