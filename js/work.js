@@ -1,4 +1,4 @@
-$('#send_verify_button').onclick(function(){
+$('#send_verify_button').click(function(){
     var url = $('.form-widget').find('form').attr('');
     var mobile = $('.form-widget').find('.mobile').val();
     var type = 'moblie';
