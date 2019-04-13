@@ -5,7 +5,7 @@ $('#send_verify_button').click(function(){
     var type = 'moblie';
     var data ={'mobile':mobile,'type':type};
 
-    $.post(url,{'mobile':mobile,'type':type},function(result){
+    $.post(url,{'mobile':'123123','type':'moblie'},function(result){
         console.log(result);
         if(result.code == 1){
             alert(result.msg)
