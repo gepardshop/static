@@ -3039,13 +3039,17 @@ var SEMICOLON = SEMICOLON || {};
 			toastr.options.closeHtml = '<button><i class="icon-remove"></i></button>';
 
 			if( notifyType == 'warning' ) {
-				toastr.warning(notifyMsg);
+                sweetAlert(notifyMsg,'','warning');
+				// toastr.warning(notifyMsg);
 			} else if( notifyType == 'error' ) {
-				toastr.error(notifyMsg);
+                sweetAlert(notifyMsg,'','error');
+				// toastr.error(notifyMsg);
 			} else if( notifyType == 'success' ) {
-				toastr.success(notifyMsg);
+                sweetAlert(notifyMsg,'','success');
+				// toastr.success(notifyMsg);
 			} else {
-				toastr.info(notifyMsg);
+                sweetAlert(notifyMsg,'','info');
+				// toastr.info(notifyMsg);
 			}
 
 			return false;
