@@ -3161,7 +3161,7 @@ var SEMICOLON = SEMICOLON || {};
 						elementResult.hide();
 
 						if( elementLoader == 'button' ) {
-							var defButton = $(form).find('button'),
+							var defButton = $(form).find('button:not(#send_verify_button)'),
 								defButtonText = defButton.html();
 
 							defButton.html('<i class="icon-line-loader icon-spin nomargin"></i>' + defButtonText);
