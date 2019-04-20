@@ -1,0 +1,49 @@
+p.form-control-static {
+    /*margin: 0;*/
+    /*padding-top: .2rem;*/
+    font-weight: 400;
+    font-size: 1rem;
+}
+.table th, .table td {
+    /*padding: 0.3rem;*/
+    vertical-align: top;
+    border-top: 1px solid #f4f5f8;
+}
+.m-portlet .m-portlet__body {
+    padding: .2rem .2rem;
+}
+.m-form .m-form__group {
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.m-section {
+    margin: 0 0 5px 0;
+}
+.sign_area {
+    margin: 30px 0 0 0;
+}
+.m-portlet .m-portlet__head .m-portlet__head-caption {
+    margin-left: 40%;
+}
+.m-portlet.m-portlet--head-sm .m-portlet__foot, .m-portlet.m-portlet--head-sm .m-portlet__body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.m-option__title {
+    margin: 0 0 10px 0;
+}
+.m-form .form-control-label.col-form-label, .m-form label.col-form-label {
+    padding-top: 0.5rem;
+}
+.table th, .table td {
+    text-align: left;
+}
+.col-form-label {
+
+    line-height: .85;
+}
+.print-img {
+    width:400px;
+    height: 400px;
+}

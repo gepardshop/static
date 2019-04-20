@@ -1,0 +1,35 @@
+<link rel="stylesheet" type="text/css" href="uploadify.css">
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.uploadify.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $.fileupload1 = $('#fileupload1').uploadify({
+        'auto': false,
+        'formData': {
+            'fcharset': 'ISO-8859-1',
+            'writetoken': '3c27707b-92be-4d98-8b7e-433a57b27277',
+            'cataid': '1',
+            'JSONRPC': '{"title": "这里是标题", "tag": "标签", "desc": "视频文档描述"}'
+        },
+        'buttonText': '选择上传文件',
+        'fileSizeLimit': '3000MB',
+        'fileTypeDesc': '视频文件',
+        'fileTypeExts': '*.avi; *.wmv; *.mp4;*.mp3; *.mov; *.flv; *.mkv; *.rmvb', //文件类型过滤
+        'swf': 'uploadify.swf',
+        'multi': true,
+        'successTimeout': 1800,
+        'queueSizeLimit': 100,
+        'uploader': 'http://v.polyv.net/uc/services/rest?method=uploadfile',
+        //onUploadSuccess为上传完视频之后回调的方法，视频json数据data返回，
+        //下面的例子演示如何获取到vid
+        'onUploadSuccess': function(file, data, response) {
+            var jsonobj = eval('(' + data + ')');
+            alert(jsonobj.data[0].vid + " - " + jsonobj.data[0].playerwidth + " - " + jsonobj.data[0].duration);
+        }
+    });
+});
+</script>
+<p>
+    <input type="file" value="Filedata" id="fileupload1">
+    <input type="button" onclick="javascript:$('#fileupload1').uploadify('upload','*')" value="submit">
+</p>

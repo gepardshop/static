@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/jquery.e-calendar.css" />
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.e-calendar.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#calendar').eCalendar({
+                yearRange:['2015','2016','2017','2018','2019','2020','2021'],   //年的下拉框
+                weekDays: ['日', '一', '二', '三', '四', '五', '六'],
+                months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],//月的下拉框
+                // textArrows: { previous: '<', next: '>' },    //改为图片< >
+                eventTitle: '日程列表',
+                //初始化数据 month:2016-9格式
+                initData: function (settings, month) {
+                    settings.events = [
+                        { id: "a1", type: "calendar", title: '222', description: '日程', datetime: new Date(2018, new Date().getMonth(), 15, 17) },
+                        { id: "a1", type: "calendar", title: 'Event 1', description: '日程', datetime: new Date(2018, new Date().getMonth(), 15, 17) },
+                        { id: "a1", type: "calendar", title: 'Event 1', description: '日程', datetime: new Date(2018, new Date().getMonth(), 15, 17) },  
+                        { id: "a1", type: "calendar", title: 'Event 1', description: '日程', datetime: new Date(2018, new Date().getMonth(), 15, 17) },  
+                        { id: "a1", type: "calendar", title: 'Event 1', description: '日程', datetime: new Date(2018, new Date().getMonth(), 15, 17) },  
+                        { id: "a1", type: "calendar", title: 'Event 1', description: '日程', datetime: new Date(2018, new Date().getMonth(), 15, 17) },
+                        { id: "a2", type: "calendar", title: 'Event 2aaaa', description: '日程', datetime: new Date(2018, new Date().getMonth(), 14, 16) },
+                        { id: "a2", type: "calendar", title: 'Event 2eeee', description: '日程', datetime: new Date(2018, new Date().getMonth(), 14, 16) },
+                        { id: "a3", type: "任务", title: 'Event 3', description: '任务', datetime: new Date(2018, new Date().getMonth(), 10, 16) }
+                    ];
+                    return;
+                    settings.events = [];
+                    if (month) {
+                        var sourse = [];
+                        $.ajax({
+                            type: "POST",
+                            data: { month: month },
+                            async: false,
+                            url: "/Calendar/GetHomeCalendar?t=" + new Date().getMilliseconds(),
+                            success: function (data) {
+                                var result = JSON.parse(data);
+                                for (var i = 0; i < result.length; i++) {
+                                    var item = {
+                                        id: result[i].Id,
+                                        type: result[i].Type,
+                                        title: result[i].Title,
+                                        description: result[i].Description,
+                                        datetime: new Date(result[i].Datetime)
+                                    }
+                                    sourse.push(item);
+                                }
+                                settings.events = sourse;
+                            },
+                            error: function () {
+                                showWarningAndTime("日历初始化异常，请联系管理员！", 3);
+                            }
+                        });
+                    }
+                },
+                //下面详情Item的点击事件
+                clickItem: function () {
+                    var _taskAppId = "ed1dd640-63ef-41ae-b90c-be3d03a40751";
+                    var _calendarAppId = "a2a37fdd-60a3-4e81-bc38-257d5f2bdd3c";
+                    var id = $(this).attr("cid");
+                    var type = $(this).attr("ctype");
+                    alert("点击id：" + id + "\r\n 类型：" + type);
+                    return;
+                    if (type == "task") {
+                        var testUrl = "../Task/TaskEdit?AppId=" + _taskAppId + "&TaskId=" + id;
+                        sideModalId = openSideModal(testUrl, "75%", 40);
+                    } else {
+                        openLayer(2, '编辑日程', '../Calendar/Edit?AppId=' + _calendarAppId + '&Type=Edit&Id=' + id + '&t=' + new Date().getMilliseconds(), '800px', '600px');
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1 style="text-align:center;">e-calendar</h1>
+    <div id="calendar"></div>
+</body>
+
+</html>
