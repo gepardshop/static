@@ -36,18 +36,10 @@ require.config({
         'jquery.counterup': ['jquery/jquery.counterup'],
         'jquery.waypoints': ['jquery/jquery.waypoints.min'],
         'jquery-migrate': ['jquery/jquery-migrate'],
-        'jquery.easing': ['jquery.easing'],
+        'jquery.easing': ['jquery/jquery.easing.min'],
         'wow': ['jquery/wow'],
         // bootstrap
         'bootstrap': ['bootstrap/js/bootstrap'],
-        'bootstrap.typeahead': ['bootstrap/js/bootstrap3-typeahead.min'],
-        'datatables.net': ['datatables.net/js/jquery.dataTables'],
-        'datatables.net-bs4': ['datatables.net-bs4/js/dataTables.bootstrap4'],
-        'datatables.net-autofill': ['datatables.net-autofill/js/dataTables.autoFill'],
-        'datatables.net-buttons': ['datatables.net-buttons/js/dataTables.buttons'],
-        'bootstrap.multiselect': ['bootstrap-multiselect/bootstrap-multiselect'],
-        // distpicker
-        'distpicker': ['distpicker/distpicker'],
     },
     shim: {
         // open-source
@@ -55,9 +47,6 @@ require.config({
         // jquery
         'jquery.ztree': {deps: ['css!' + baseRoot + 'ztree/zTreeStyle/zTreeStyle.css']},
         // bootstrap
-        'bootstrap.typeahead': {deps: ['bootstrap']},
-        'bootstrap.multiselect': {deps: ['bootstrap', 'css!' + baseRoot + 'bootstrap-multiselect/bootstrap-multiselect.css']},
-        'distpicker': {deps: [baseRoot + 'distpicker/distpicker.data.js']},
         'ueditor': ['ueditor.config', 'ZeroClipboard'],
         'jquery.counterup': ['jquery.waypoints'],
         'jqueryLazyload': ['jquery'],
