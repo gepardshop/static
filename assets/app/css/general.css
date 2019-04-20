@@ -868,7 +868,7 @@ pre {
     margin-top: -25px;
     width: 2pc;
     height: 40px;
-    background: url(/public/plugins/superslider/images/slider-arrow.png) -110px 5px no-repeat;
+    background: url(/static/plugins/superslider/images/slider-arrow.png) -110px 5px no-repeat;
     opacity: .5;
     filter: alpha(opacity=50)
 }

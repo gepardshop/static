@@ -23,7 +23,7 @@
     var domain = '/';
     console.log(domain);
     // alert('sdf');
-	var URL = "/public/plugins/ueditor/";
+	var URL = "/static/plugins/ueditor/";
 
     /**
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
